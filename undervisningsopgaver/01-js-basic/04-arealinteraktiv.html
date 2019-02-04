@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <script>
+        let længde = prompt("angiv en længde i meter");
+        let bredde = prompt("angiv en bredde i meter");
+        let areal = længde * bredde;
+        alert(`længde: ${længde} meter, bredde: ${bredde} meter, areal: ${areal} kvadratmeter`);
+
+        if (confirm("Prøv igen?")) {
+            location.reload();
+        } else {
+            alert("Javel");
+        }
+    </script>
+
+</body>
+</html>
