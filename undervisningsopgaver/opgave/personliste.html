@@ -28,6 +28,7 @@
         .vis img {
             width: 70%;
         }
+
     </style>
 </head>
 
@@ -59,7 +60,8 @@
 
             function visPersoner() {
                 personer.forEach(eachPerson => {
-                    dest.innerHTML += `<div class="vis"><h2>${eachPerson.navn}</h2><img src = "${eachPerson.billede}"> <p> Github: ${eachPerson.github}</p></div>`;
+                    dest.innerHTML += `<div class="vis"><h2>${eachPerson.navn}</h2><img src = "${eachPerson.billede}">
+<a href="https://github.com/${eachPerson.github}"target="_blank">Github</a>`;
                 })
 
 
@@ -67,6 +69,7 @@
 
             getJson()
         }
+
     </script>
 
 
