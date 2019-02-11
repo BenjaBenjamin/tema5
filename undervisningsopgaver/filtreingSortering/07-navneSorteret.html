@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+        #personer {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+
+        }
+
+        .vis {
+            background-color: whitesmoke;
+            width: 80%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border: solid black 1px;
+            margin: 10px;
+            padding: 5px;
+            box-shadow: 7px 7px grey;
+
+        }
+
+        .vis img {
+            width: 70%;
+        }
+
+        .menu {
+            text-align: center;
+        }
+
+        .valgt {
+            background-color: darkblue;
+            color: white;
+
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1></h1>
+    <div class="menu">
+        <button class="filter valgt" data-hold="alle">Alle</button>
+        <button class="filter" data-hold="a">Hold A</button>
+        <button class="filter" data-hold="b">Hold B</button>
+    </div>
+    <div id="personer">
+        <!--
+<h3></h3>
+<img src="" alt="">
+<p></p>
+-->
+    </div>
+
+    <script>
+        let personer = [];
+        let filter = "alle";
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            let dest = document.querySelector("#personer");
+            let temp = document.querySelector("template");
+
+            async function getJson() {
+                let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
+                personer = await jsonData.json();
+                personer.sort((a, b) => {
+                    return a.alder - b.alder
+                })
+                personer.sort((a, b) => {
+                    return b.navn.localeCompare(a.navn);
+                })
+                visPersoner();
+
+            }
+
+
+            function visPersoner() {
+                dest.innerHTML = "";
+                personer.forEach(eachPerson => {
+                    if (filter == "alle" || filter == eachPerson.hold) {
+                        dest.innerHTML += `<div class="vis"><h2>${eachPerson.navn}</h2><img src = "${eachPerson.billede}">
+<p>alder: ${eachPerson.alder}</p>`;
+                    }
+
+
+                })
+            }
+            //function vispersoner slut
+            document.querySelectorAll(".filter").forEach(elm => {
+                elm.addEventListener("click", filtrering);
+            })
+
+            function filtrering() {
+                filter = this.getAttribute("data-hold");
+                document.querySelector("h1").textContent = this.textContent;
+                document.querySelectorAll(".filter").forEach(elm => {
+                    elm.classList.remove("valgt");
+                })
+                this.classList.add("valgt");
+
+                visPersoner();
+
+            }
+
+            getJson()
+        }
+    </script>
+
+
+</body>
+
+</html>
