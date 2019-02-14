@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <style>
+        #indhold {
+            box-sizing: border-box;
+            background-color: lightgrey;
+            width: 90vw;
+            height: 90vh;
+            margin: auto;
+            padding: 20px;
+        }
+
+        #luk {
+            box-sizing: border-box;
+            text-align: right;
+            padding-right: 1em;
+        }
+
+        #singleview {
+            width: 100vw;
+            height: 100vh;
+            background-color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <div id="singleview" class="hidden">
+            <div id="tilbage"><button>X</button></div>
+            <div id="indhold"></div>
+        </div>
+    </main>
+
+
+    <script>
+        let urlParams = new URLSearchParams(window.location.search);
+        let github = urlParams.get("github");
+        let personer;
+        let person;
+        console.log(github);
+        document.addEventListener("DOMContentLoaded", sidenVises);
+
+        function sidenVises() {
+            async function getJson() {
+                let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
+                personer = await jsonData.json();
+                personer.forEach(obj => {
+                    if (obj.github == github) {
+                        person = obj;
+                    }
+                })
+                åbn();
+            }
+
+            function åbn() {
+                document.querySelector("#indhold").innerHTML = `<article class="person">
+                <div> <img src="${person.billede}"> </div>
+                        <h2>${person.navn}</h2>
+                        <a href="https://github.com/${person.github}">
+                            <b>Github: ${person.github}</b>
+                         </a>
+                        <p> ${person.alder}</p>
+                        <p> ${person.køn}</p>
+                        <p> ${person.email}</p>
+                        <p> ${person.hold}</p>
+                        <p> ${person.historie}</p>
+                </article>`;
+            }
+            document.querySelector("#tilbage button").addEventListener("click", () => {
+                location.href = "05-kald.html"
+            })
+            getJson();
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>
