@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+        #retter {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+
+        }
+
+        .billede {
+            margin: 10px;
+            align-items: center;
+            width: 90%;
+        }
+
+        footer {
+            background-color: black;
+            color: whitesmoke;
+            padding: 1px;
+            margin: 3px;
+        }
+
+        .pop {
+            box-sizing: border-box;
+            background-color: black;
+            width: 40vw;
+            height: 82vh;
+            margin: auto;
+            border: white solid 4px;
+            border-radius: 25px;
+        }
+
+        .pop h2 {
+            font-size: 2rem;
+            border: none;
+            background-color: black;
+
+        }
+
+        .pop p {
+            color: whitesmoke;
+            font-size: 1.3rem;
+        }
+
+        .vis {
+            background-color: whitesmoke;
+            width: 80%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin: 10px;
+            padding: 5px;
+            box-shadow: 7px 7px grey;
+        }
+
+        .vis:hover {
+            opacity: 0.7;
+        }
+
+        .vis p {
+            font-size: 1.2rem;
+
+        }
+
+        .stortbillede {
+            width: 202%;
+        }
+
+        .menu {
+            text-align: center;
+        }
+
+        .valgt {
+            background-color: black;
+            color: white;
+            border-radius: 5px;
+
+        }
+
+        h2 {
+            background-color: rgba(169, 169, 169, 0.72);
+            color: whitesmoke;
+            height: 4vw;
+            padding: 5px;
+            border: solid white;
+            border-radius: 10px;
+        }
+
+        .pris {
+            font-size: 1.5rem;
+        }
+
+        #popup {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            background-color: ;
+            display: none;
+            text-align: center;
+        }
+
+        #indhold {
+            box-sizing: border-box;
+            width: 90vw;
+            height: 75vh;
+            margin: auto;
+        }
+
+        #luk {
+            box-sizing: border-box;
+            text-align: right;
+            padding-right: 1em;
+        }
+
+        #luk button {
+            color: whitesmoke;
+            border: white solid;
+            font-size: 2em;
+            cursor: pointer;
+            margin: 25px;
+            background-color: black;
+            border-radius: 50px;
+            width: 3.3vw;
+            margin-right: 25vw;
+        }
+
+        .headerbillede {
+            width: 100%;
+            height: 25vw;
+            border: black solid;
+
+        }
+
+        h4 {
+            background-color: black;
+            color: whitesmoke;
+            font-size: 3rem;
+            position: absolute;
+            top: 10vw;
+            left: 5vw;
+            padding: 5px;
+            border: solid white 4px;
+        }
+
+        .filter {
+            font-size: 1rem;
+            margin: 5px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        h1 {
+            padding-left: 15px;
+            border-radius: 5px;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="popup">
+        <div id="luk"><button>X</button></div>
+        <div id="indhold"></div>
+    </div>
+
+    <header>
+        <h4>Bistro Babushka</h4>
+        <img class="headerbillede" src="restaurant.jpg">
+
+        <nav class="menu">
+            <button class="filter valgt" data-retter="alle">Alle</button>
+            <button class="filter" data-retter="forretter">Forretter</button>
+            <button class="filter" data-retter="hovedretter">Hovedretter</button>
+            <button class="filter" data-retter="desserter">Desserter</button>
+            <button class="filter" data-retter="drikkevarer">Drikkevarer</button>
+            <button class="filter" data-retter="sideorders">Side orders</button>
+        </nav>
+        <h1></h1>
+    </header>
+
+    <main>
+        <section id="retter">
+        </section>
+    </main>
+
+    <footer></footer>
+
+    <script>
+        let personer = [];
+        let filter = "alle";
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            let dest = document.querySelector("#retter");
+            let temp = document.querySelector("template");
+
+            async function getJson() {
+                let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
+                personer = await jsonData.json();
+                personer.sort((a, b) => {
+                    return a.id - b.id
+                })
+                visRetter();
+
+            }
+
+
+            function visRetter() {
+                dest.innerHTML = "";
+                personer.forEach(eachRet => {
+                    if (filter == "alle" || filter == eachRet.kategori) {
+                        let template = `<div class="vis">
+<img class="stortbillede" src = "imgs/large/${eachRet.billede}.jpg"><h2>${eachRet.navn}</h2><p>${eachRet.kort}</p><p class="pris"><br><br><br>Pris: ${eachRet.pris}</p>`;
+                        dest.insertAdjacentHTML("beforeend", template);
+                        dest.lastElementChild.addEventListener("click", åbn);
+
+                        function åbn() {
+                            document.querySelector("#indhold").innerHTML =
+                                `<div class="pop">
+<img class="billede" src = "imgs/large/${eachRet.billede}.jpg"><h2>${eachRet.navn}</h2><p>${eachRet.kort}</p><p class="pris"><br><br><br>Pris: ${eachRet.pris}</p>`;
+                            document.querySelector("#popup").style.display = "block";
+                        }
+                    }
+
+
+                })
+            }
+            //function visRetter slut
+
+            document.querySelector("#luk button").addEventListener("click", () => {
+                document.querySelector("#popup").style.display = "none";
+
+            })
+            document.querySelectorAll(".filter").forEach(elm => {
+                elm.addEventListener("click", filtrering);
+            })
+
+            function filtrering() {
+                filter = this.getAttribute("data-retter");
+                document.querySelector("h1").textContent = this.textContent;
+                document.querySelectorAll(".filter").forEach(elm => {
+                    elm.classList.remove("valgt");
+                })
+                this.classList.add("valgt");
+
+                visRetter();
+
+            }
+
+            getJson()
+        }
+    </script>
+
+    <footer>
+        <p>Kontakt: 00000000</p>
+        <p>Adresse: 00000000</p>
+
+    </footer>
+</body>
+
+</html>
