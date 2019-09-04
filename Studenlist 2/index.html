@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studenlist</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <img src="yeet.jpg" alt="headerbillede" class="headerbillede">
+    </header>
+    <div id="popup">
+      <div id="luk"><button>X</button></div>
+      <div id="indhold"></div>
+    </div>
+
+    <label for="#sort-by">Sort by </label>
+            <span class="hide atoz sorting">A &#8594 Z</span>
+            <span class="hide ztoa sorting">Z &#8594 A</span>
+            <select id="sort-by">
+                <option value="none">None</option>
+                <option value="Firstname">Firstname</option>
+                <option value="Lastname">Lastname</option>
+                <option value="House">House</option>
+            </select>
+
+    <div class="dropdown">
+      <span class="knap">Filter</span>
+      <div class="dropdown-content">
+        <nav class="menu">
+          <button class="filter valgt" data-students="alle">All Houses</button>
+          <button class="filter" data-students="Hufflepuff">Hufflepuff</button>
+          <button class="filter" data-students="Gryffindor">Gryffindor</button>
+          <button class="filter" data-students="Ravenclaw">Ravenclaw</button>
+          <button class="filter" data-students="Slytherin">Slytherin</button>
+        </nav>
+      </div>
+    </div>
+
+    <h1></h1>
+    <main>
+      <section id="students"></section>
+    </main>
+
+    <script src="script.js"></script>
+
+    <footer></footer>
+  </body>
+</html>

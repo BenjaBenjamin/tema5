@@ -1,0 +1,577 @@
+img {
+  width: 100%;
+}
+
+html {
+  font-size: 100%;
+  font-family: "Arial";
+}
+
+.headerbillede{
+  height: 80vh;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+}
+.sorting {
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+.dropdown {
+  position: absolute;
+  right: 10px;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  right: 110px;
+  position: absolute;
+  z-index: 1;
+  margin-top: 0px;
+}
+.atilz{
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown2 {
+  position: absolute;
+  right: 100px;
+  display: inline-block;
+}
+
+.dropdown-content2 {
+  display: none;
+  right: 285px;
+  position: absolute;
+  z-index: 1;
+  margin-top: 0px;
+}
+
+.dropdown2:hover .dropdown-content2 {
+  display: block;
+}
+
+body {
+  background-image: url("large.jpg");}
+
+header {
+}
+
+/*Menusiden*/
+
+#students {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.billede {
+  height: 25vw;
+  width: 35vw;
+  margin-top: 6vw;
+}
+
+.pop {
+  background-image: url(jatak.jpg);
+  background-repeat: no-repeat;
+  width: 50vw;
+  height: 65vh;
+  margin-left: 23vw;
+}
+
+.pop h2 {
+  font-size: 2rem;
+  border: none;
+  margin-left: 14%;
+  margin-top: 2vw;
+}
+
+.pop p {
+  color black;
+  font-size: 2rem;
+  margin-top: vw;
+}
+
+.vis {
+  background-color: whitesmoke;
+  width: 80%;
+  display: grid;
+  margin: auto;
+  margin-bottom: 3vw;
+  margin-top: 3vw;
+}
+
+.vis:nth-child(1) {
+  margin-top: 11vw;
+}
+
+.vis:nth-child(2) {
+  margin-top: 11vw;
+}
+
+.vis:nth-child(3) {
+  margin-top: 11vw;
+}
+
+.vis:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.stortbillede {
+  width: 26.1vw;
+  height: 26.1vw;
+}
+
+h2 {
+  position: absolute;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.kort {
+  position: absolute;
+  font-size: 1.5rem;
+  margin-top: 2vw;
+}
+
+#popup {
+  position: fixed;
+  text-align: center;
+  z-index: 100;
+  bottom: 2vw;
+}
+
+#indhold {
+  box-sizing: border-box;
+  width: 120vw;
+  height: 75vh;
+}
+
+#luk button {
+  width: 2vw;
+  height: 2vw;
+  margin-left: 23vw;
+  margin-bottom: 1vw;
+}
+
+h4 {
+  background-color: black;
+  color: whitesmoke;
+  font-size: 3rem;
+  position: absolute;
+  top: 10vw;
+  left: 5vw;
+  padding: 5px;
+  border: solid white 4px;
+}
+
+.knap{
+  position: absolute;
+  right: 150px;
+  font-size: 2rem;
+  padding: 1vw;
+  margin-top: 2vw;
+  background-color: white;
+}
+
+.filter {
+  font-size: 2rem;
+  margin-top: 0.5vw;
+  padding: 0.5vw;
+  cursor: pointer;
+}
+.filter2 {
+  font-size: 2rem;
+  margin-top: 0.5vw;
+  padding: 0.5vw;
+  cursor: pointer;
+}
+.knap2{
+  position: absolute;
+  right: 300px;
+  font-size: 2rem;
+  padding: 1vw;
+  margin-top: 2vw;
+  background-color: white;
+}
+
+.filter:active {
+}
+
+.valgt {
+}
+
+h1 {
+  position: absolute;
+  margin-top: 3vw;
+  padding: 1vw;
+  margin-left: 1.3vw;
+  font-size: 3rem;
+}
+
+
+/*Menusiden*/
+
+/*breakpoint Laptop*/
+@media screen and (max-width: 1680px) {
+  .container p {
+    font-size: 130%;
+  }
+
+  .container2 p {
+    font-size: 130%;
+  }
+
+  .menu {
+    margin-top: 10vw;
+  }
+
+  .vis:nth-child(1) {
+    margin-top: 15vw;
+  }
+
+  .vis:nth-child(2) {
+    margin-top: 15vw;
+  }
+
+  .vis:nth-child(3) {
+    margin-top: 15vw;
+  }
+
+  .pris {
+    margin-top: 16.5vw;
+  }
+
+  .kort {
+    font-size: 1.3rem;
+  }
+}
+
+/*breakpoint Tablet*/
+@media screen and (max-width: 768px) {
+  .pop {
+    width: 60vw;
+    height: 50vw;
+  }
+
+  .pop h2 {
+    font-size: 150%;
+    border: none;
+  }
+
+  .pop p {
+    color: whitesmoke;
+    font-size: 120%;
+  }
+
+  .billede {
+    width: 25vw;
+    height: 25vw;
+    margin-top: 6vw;
+  }
+
+  #luk button {
+    width: 4vw;
+    height: 4vw;
+    margin-left: 38vw;
+  }
+
+  #students {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .vis {
+    width: 70%;
+  }
+
+  .stortbillede {
+    width: 34.15vw;
+    height: 35vw;
+  }
+
+  .menu {
+    margin-top: 15vw;
+  }
+
+  .filter {
+    font-size: 110%;
+  }
+
+  h1 {
+    margin-top: 8vw;
+    margin-left: 2vw;
+    font-size: 180%;
+  }
+
+  .vis:nth-child(1) {
+    margin-top: 22vw;
+  }
+
+  .vis:nth-child(2) {
+    margin-top: 22vw;
+  }
+
+  .vis:nth-child(3) {
+    margin-top: 0vw;
+  }
+
+  .pris {
+    font-size: 120%;
+    margin-top: 22vw;
+    padding: 1vw;
+  }
+
+  .kort {
+    font-size: 83%;
+    height: 8vw;
+    margin-top: 27vw;
+  }
+
+  h2 {
+    font-size: 120%;
+  }
+
+  .container {
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  .container2 {
+    flex-wrap: wrap;
+  }
+
+  .box {
+    width: 100vw;
+    height: 30vw;
+    margin: auto;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-top: 2vw;
+  }
+
+  .box2 {
+    width: 50vw;
+    height: 50vw;
+    margin: auto;
+    margin-top: 2vw;
+  }
+
+  .box3 {
+    width: 100vw;
+    height: 20vw;
+    margin: auto;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-top: 2vw;
+  }
+
+  .box4 {
+    width: 100vw;
+    height: 50vw;
+    margin: auto;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-top: 2vw;
+  }
+
+  .box5 {
+    font-size: 1.5rem;
+    height: 40vw;
+    margin-bottom: 59vw;
+  }
+
+  .container p {
+    font-size: 120%;
+  }
+
+  .container2 p {
+    font-size: 120%;
+  }
+
+  li:nth-child(2) {
+    position: absolute;
+    left: 18%;
+  }
+
+  li:nth-child(3) {
+    position: absolute;
+    left: 80%;
+  }
+
+  li:nth-child(4) {
+    position: absolute;
+    left: 65%;
+  }
+}
+
+/*breakpoint Mobile*/
+@media screen and (max-width: 375px) {
+  .box5 {
+    font-size: 1rem;
+    height: 50vw;
+    margin-bottom: 118.2vw;
+    border-width: 1vw;
+    margin-left: 16vw;
+  }
+
+  li:nth-child(3) {
+    position: absolute;
+    left: 80%;
+  }
+
+  li:nth-child(4) {
+    position: absolute;
+    left: 60%;
+  }
+
+  .pop {
+    width: 100vw;
+    height: 100vw;
+    margin: auto;
+  }
+
+  .pop h2 {
+    font-size: 150%;
+    border: none;
+  }
+
+  .pop p {
+    color: whitesmoke;
+    font-size: 120%;
+  }
+
+  .billede {
+    width: 50vw;
+    height: 50vw;
+    margin-top: 10vw;
+  }
+
+  #luk button {
+    width: 10vw;
+    height: 10vw;
+    margin-left: 85vw;
+  }
+
+  #students {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .vis {
+    width: 70%;
+  }
+
+  .stortbillede {
+    width: 34.15vw;
+    height: 35vw;
+  }
+
+  #students {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .vis {
+    width: 70%;
+    margin-right: 9vw;
+    margin-bottom: 6vw;
+  }
+
+  .stortbillede {
+    width: 68.2vw;
+    height: 70vw;
+  }
+
+  .menu {
+    margin-top: 18vw;
+  }
+
+  .filter {
+    font-size: 74%;
+  }
+
+  h1 {
+    margin-top: 10vw;
+    margin-left: 2vw;
+    font-size: 150%;
+  }
+
+  .vis:nth-child(1) {
+    margin-top: 30vw;
+  }
+
+  .vis:nth-child(2) {
+    margin-top: 0vw;
+  }
+
+  .vis:nth-child(3) {
+    margin-top: 0vw;
+  }
+
+  .pris {
+    font-size: 120%;
+    margin-top: 45vw;
+    padding: 1vw;
+  }
+
+  .kort {
+    font-size: 80%;
+    height: 15vw;
+    margin-top: 55vw;
+  }
+
+  h2 {
+    font-size: 140%;
+  }
+
+  header {
+    width: 114%;
+  }
+
+  .logo {
+    margin-left: 6vw;
+  }
+
+  .container p {
+    font-size: 55%;
+  }
+
+  .container2 p {
+    font-size: 55%;
+  }
+
+  li a {
+    font-size: 0.6rem;
+  }
+
+  .box {
+    border: solid #ff7bac 5px;
+  }
+
+  .box2 {
+    border: solid #50c096 5px;
+  }
+
+  .box3 {
+    border: solid #ff7bac 5px;
+  }
+
+  .box4 {
+    border: solid #50c096 5px;
+  }
+}
